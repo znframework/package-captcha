@@ -320,7 +320,8 @@ class Render implements RenderInterface
     {
         $this->sets = array_merge
         (
-            Config::default(new CaptchaDefaultConfiguration)->get('ViewObjects', 'captcha'), 
+            Config::default('ZN\Captcha\CaptchaDefaultConfiguration')
+                  ::get('ViewObjects', 'captcha'), 
             $this->sets
         );
 
