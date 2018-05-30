@@ -266,6 +266,9 @@ class Render implements RenderInterface
 
         if( $this->getCode() )
         {
+            # Clean Captcha Images
+            $this->clean();
+
             # Create Directory
             $this->directory();
 
@@ -285,12 +288,7 @@ class Render implements RenderInterface
             $this->border($file);
 
             # Output
-            $return = $this->output($img, $file);
-
-            # Clean Captcha Images
-            $this->clean();
-
-            return $return;
+            return $this->output($img, $file);
         }
     }
 
