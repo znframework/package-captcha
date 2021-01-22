@@ -278,32 +278,35 @@ class Render implements RenderInterface
         # Create Session
         $this->session();
 
-        if( $this->getCode() )
+        if( ! $this->getCode() )
         {
-            # Clean Captcha Images
-            $this->clean();
-
-            # Create Directory
-            $this->directory();
-
-            # Create Color
-            $this->color($file);
-
-            # Background Image
-            $this->background($file);
-
-            # Text 
-            $this->text($file);
-
-            # Grid
-            $this->grid($file);
-
-            # Border
-            $this->border($file);
-
-            # Output
-            return $this->output($img, $file);
+            return '';
         }
+
+        # Clean Captcha Images
+        $this->clean();
+
+        # Create Directory
+        $this->directory();
+
+        # Create Color
+        $this->color($file);
+
+        # Background Image
+        $this->background($file);
+
+        # Text 
+        $this->text($file);
+
+        # Grid
+        $this->grid($file);
+
+        # Border
+        $this->border($file);
+
+        # Output
+        return $this->output($img, $file);
+        
     }
 
     /**
