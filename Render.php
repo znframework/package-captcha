@@ -80,13 +80,13 @@ class Render implements RenderInterface
     /**
      * Sets the character type.
      * 
-     * @param string $type = 'alnum' - options[alnum|numeric|]
+     * @param string $type = 'alnum' - options[alnum|numeric|string|alpha|special|all]
      * 
      * @return Captcha
      */
     public function type(String $type = 'alnum') : Render
     {
-        $this->sets['text']['type'] = $param;
+        $this->sets['text']['type'] = $type;
 
         return $this;
     }
@@ -357,7 +357,7 @@ class Render implements RenderInterface
             $this->sets
         );
 
-        $this->session->insert($this->key, Encode\RandomPassword::create((int) $this->sets['text']['length'], $this->sets['text']['type'] ?? 'alnum'));
+        $this->session->insert($this->key, Encode\RandomPassword::create($this->sets['text']['length'] ?? 6, $this->sets['text']['type'] ?? 'alnum'));
     }
 
     /**
